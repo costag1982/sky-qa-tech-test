@@ -19,7 +19,7 @@ class FeatureContext extends BehatContext {
     }
 
     /**
-     * @Given /^I enter "([^"]*)" into the calculator$/
+     * @Given /^I enter "(\d+)" into the calculator$/
      */
     public function iEnterIntoTheCalculator($argument1) {
         $this->calculator->pressNumber($argument1);
@@ -47,7 +47,7 @@ class FeatureContext extends BehatContext {
     }
 
     /**
-     * @Then /^I see a result of "([^"]*)"$/
+     * @Then /^I see a result of "(\d+)"$/
      */
     public function iSeeAResultOf($argument1) {
         $result = $this->calculator->readScreen();
@@ -55,21 +55,4 @@ class FeatureContext extends BehatContext {
             throw new Exception("Wrong result, actual is [$result]");
         }
     }
-
-    /**
-     * @Given /^I hit "add"$/
-     */
-    public function iHitAdd()
-    {
-        $this->calculator->pressAdd();
-    }
-
-    /**
-     * @Given /^I hit "subtract"$/
-     */
-    public function iHitSubtract()
-    {
-        $this->calculator->pressSubtract();
-    }
-
 }
